@@ -1,0 +1,21 @@
+﻿@model IList<Roxosoft_TEST.Models.Product.ProductViewModel>
+@{
+    ViewData["Title"] = "CreateOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateOrder</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <ul>
+            @foreach (var product in Model)
+            {
+                <li uid="@product.Uid">@product.Name <span><input type="button" value="Add" /> </span></li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-8">
+
+    </div>
+</div>

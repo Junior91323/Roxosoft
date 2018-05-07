@@ -1,0 +1,49 @@
+﻿@model Roxosoft_TEST.Models.Orders.OrderViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="orderInfo">
+            @if (Model.Status != Roxosoft.Common.Enums.OrderStatus.Complete)
+            {
+                <input type="button" value="Complete" id="@Model.Id" class="btn btn-success pull-right btnCompleteOrder" />
+            }
+
+            <div><label>Number:</label>  <span> @Model.Id</span> </div>
+            <div><label>Date: </label> <span> @Model.CreateDate</span> </div>
+            <div><label>Status: </label> <div class="@Model.Status.ToString()"></div><span> @Model.Status.ToString()</span> </div>
+            <div><label>Total: </label> <span> @Model.TotalPrice</span> </div>
+        </div>
+        <hr />
+        <div class="orderProducts">
+            <table class="table table-bordered products">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var prod in Model.Products)
+                    {
+                        <tr>
+                            <td>@prod.Name</td>
+                            <td>@prod.Qty</td>
+                            <td>@prod.Price</td>
+                            <td>@(prod.Price * @prod.Qty)</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>@Model.Products.Count()</td>
+                        <td>@Model.TotalCount</td>
+                        <td>@Model.Products.Sum(x => x.Price)</td>
+                        <td>@Model.TotalPrice</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

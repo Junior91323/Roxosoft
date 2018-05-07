@@ -1,0 +1,32 @@
+﻿@model IList<Roxosoft_TEST.Models.Orders.OrderViewModel>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <a asp-controller="Product" asp-action="Create" title="Add Product" class="btn btn-info">Add Product</a>
+    <a asp-controller="Product" asp-action="List" title="ProductList" class="btn btn-info">Product List</a>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <div class="list-group">
+            @foreach (var order in Model)
+            {
+                <a href="#" id="@order.Id" class="list-group-item list-group-item-action order"><div class="@order.Status.ToString()"> </div> Order #@order.Id - @order.CreateDate</a>
+            }
+        </div>
+        <hr />
+        <div>
+            <div class="@Roxosoft.Common.Enums.OrderStatus.Complete.ToString()"></div> <label>@Roxosoft.Common.Enums.OrderStatus.Complete.ToString()</label><br />
+            <div class="@Roxosoft.Common.Enums.OrderStatus.InProgress.ToString()"></div> <label>@Roxosoft.Common.Enums.OrderStatus.InProgress.ToString()</label>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="orderInfoWrapp">
+
+        </div>
+    </div>
+</div>
+

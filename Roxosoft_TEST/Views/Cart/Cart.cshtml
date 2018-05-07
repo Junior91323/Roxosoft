@@ -1,0 +1,41 @@
+﻿@model IList<Roxosoft_TEST.Models.Cart.CartViewModel>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name </th>
+                <th>Count </th>
+                <th>Total </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Product.Name</td>
+                    <td>@item.ProductCount</td>
+                    <td>@(item.Product.Price * item.ProductCount) </td>
+                    <td><a uid="@item.Product.Uid" title="Delete" class="btn btn-danger btnDeleteCartItem"><span class="glyphicon glyphicon-remove"></span></a></td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>
+
+                    <input type="button" class="btn btn-default btnCreateOrder" value="Create order" />
+
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+}
+else
+{
+    <h3>Empty</h3>
+}

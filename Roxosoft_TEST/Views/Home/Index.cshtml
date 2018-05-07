@@ -1,0 +1,21 @@
+﻿@model IList<Roxosoft_TEST.Models.Orders.OrderViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Orders</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <ul>
+            @foreach (var order in Model)
+            {
+                <li>@order.Id</li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-8">
+
+    </div>
+</div>
